@@ -5,6 +5,21 @@ class DaoFacility(BaseDao):
     def find_all(self):
         return super().find_all('facility')
 
+    def find_facility(self,fid,is_ourdoor):
+        sql= "select * from facility where fid=%d and is_outdoor=%d" %(fid,is_ourdoor)
+        cursor = self.db.get_cursor()
+        cursor.execute(sql)
+        all_rows = cursor.fetchall()
+        self.db.commit_close()
+        return all_rows
+
+    def find_fid(self,fid):
+        sql="select * from facility where fid=%d" % fid
+        cursor = self.db.get_cursor()
+        cursor.execute(sql)
+        all_rows = cursor.fetchall()
+        self.db.commit_close()
+        return all_rows
 
     def find_outdoor(self):
         sql = 'select * from facility where is_outdoor=1;'
@@ -45,10 +60,10 @@ class DaoFacility(BaseDao):
         cursor.execute(sql)
         self.db.commit_close()
 
-    def update(self,fid, status_label, manufactory, manufacture_date, eid, is_outdoor,fid_condition):
-        sql="update facility set fid=%d, status_label='%s',manufactory='%s'," \
+    def update(self,status_label, manufactory, manufacture_date, eid, is_outdoor,fid):
+        sql="update facility set status_label='%s',manufactory='%s'," \
             "manufacture_date='%s',eid=%d,is_outdoor=%d " \
-            "where fid=%d" % (fid, status_label, manufactory, manufacture_date, eid, is_outdoor,fid_condition)
+            "where fid=%d" % (status_label, manufactory, manufacture_date, eid, is_outdoor,fid)
         cursor = self.db.get_cursor()
         cursor.execute(sql)
         self.db.commit_close()

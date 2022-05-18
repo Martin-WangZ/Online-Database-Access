@@ -14,7 +14,17 @@ class DaoPrivateCoach(BaseDao):
         return all_rows
 
     def find_members(self,rid):
-        sql = "select mid,fname,lname,email,phone,mtype from member where mid in (select mid from train where rid = %d)" % rid
+        sql = "select mid,fname,lname,email,phone,mtype from member where mid in (select mid from train where rid = %d)"\
+              % rid
+        cursor = self.db.get_cursor()
+        cursor.execute(sql)
+        all_rows = cursor.fetchall()
+        self.db.commit_close()
+        return all_rows
+
+    def find_non_members(self,rid):
+        sql = "select mid,fname,lname,email,phone,mtype from member where mid not in (select mid from train where rid = %d)"\
+              % rid
         cursor = self.db.get_cursor()
         cursor.execute(sql)
         all_rows = cursor.fetchall()
@@ -27,17 +37,17 @@ class DaoPrivateCoach(BaseDao):
         cursor.execute(sql)
         self.db.commit_close()
 
-    def insert(self,rid, fname, lname, teaching_age, gender, email, phone, age, price_for_training, password):
-        sql="insert into private_coach(rid, fname, lname, teaching_age, gender, email, phone, age, price_for_training, password) values(%d,'%s','%s',%d,'%s','%s','%s',%d,%d,,'%s')" \
-            % (rid, fname, lname, teaching_age, gender, email, phone, age, price_for_training, password)
+    def insert(self,rid, fname, lname, teaching_age, gender, email, phone, age, price_for_training, password,username):
+        sql="insert into private_coach(rid, fname, lname, teaching_age, gender, email, phone, age, price_for_training, password,username) values(%d,'%s','%s',%d,'%s','%s','%s',%d,%d,'%s','%s')" \
+            % (rid, fname, lname, teaching_age, gender, email, phone, age, price_for_training, password,username)
         cursor = self.db.get_cursor()
         cursor.execute(sql)
         self.db.commit_close()
 
-    def update(self,rid, fname, lname, teaching_age, gender, email, phone, age, price_for_training, password, rid_condition):
+    def update(self,rid, fname, lname, teaching_age, gender, email, phone, age, price_for_training, password, username,rid_condition):
         sql="update private_coach set rid=%d, fname='%s',lname='%s',teaching_age=%d, " \
-            "gender='%s',email='%s', phone='%s',age=%d,price_for_training=%d,password='%s' " \
-            "where rid=%d" % (rid, fname, lname, teaching_age, gender, email, phone, age, price_for_training, password, rid_condition)
+            "gender='%s',email='%s', phone='%s',age=%d,price_for_training=%d,password='%s',username='%s' " \
+            "where rid=%d" % (rid, fname, lname, teaching_age, gender, email, phone, age, price_for_training, password, username,rid_condition)
         cursor = self.db.get_cursor()
         cursor.execute(sql)
         self.db.commit_close()

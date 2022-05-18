@@ -45,7 +45,6 @@ class BaseDao:
         cursor = self.db.get_cursor()
         cursor.execute(sql)
         all_rows = cursor.fetchall()
-        self.db.commit_close()
         return all_rows
 
 

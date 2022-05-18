@@ -1,5 +1,5 @@
 class ModelMember:
-    def __init__(self,mid,fname,lname,phone,address,email,gender,bid,mtype,password):
+    def __init__(self,mid,fname,lname,phone,address,email,gender,bid,mtype,password,username):
         self.__email=email
         self.__gender=gender
         self.__bid=bid
@@ -10,6 +10,17 @@ class ModelMember:
         self.__lname=lname
         self.__phone=phone
         self.__address=address
+        self.__username=username
+
+    @property
+    def username(self):
+        return self.__username
+
+    @username.setter
+    def username(self, username):
+        self.__username = username
+
+
 
     @property
     def password(self):

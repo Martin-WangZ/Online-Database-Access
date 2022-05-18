@@ -1,7 +1,7 @@
 
 
 class ModelEmployee:
-    def __init__(self, eid, fname, lname, email, phone, salary, gender,mid,bid,password, is_internship):
+    def __init__(self, eid, fname, lname, email, phone, salary, gender,mid,bid,password, is_internship, username):
         self.__eid = eid
         self.__fname = fname
         self.__lname = lname
@@ -13,6 +13,14 @@ class ModelEmployee:
         self.__bid = bid
         self.__password = password
         self.__is_internship = is_internship
+        self.__username=username
+
+    @property
+    def username(self):
+        return self.__username
+    @username.setter
+    def username(self,username):
+        self.__username=username
 
     @property
     def eid(self):

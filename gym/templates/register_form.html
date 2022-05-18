@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+<form action="/register" method="post">
+    <div class="form-group">
+    <label >eid</label>
+    <input type="text" class="form-control" name="eid" id="eid" required>
+  </div>
+  <div class="form-group">
+    <label >firstname</label>
+    <input type="text" class="form-control" name="fname" id="firstname" required>
+  </div>
+  <div class="form-group">
+    <label>lastname</label>
+    <input type="text" class="form-control" name="lname" id="lastname" required>
+  </div>
+  <div class="form-group">
+    <label >Email address</label>
+    <input type="email" class="form-control" name="email" id="Email" required>
+  </div>
+  <div class="form-group">
+    <label>phone</label>
+    <input type="text" class="form-control" name="phone" id="phone" required>
+  </div>
+    <div class="form-group">
+    <label>salary</label>
+    <input type="text" class="form-control" name="salary" id="salary" required>
+   </div>
+    <div class="form-group">
+    <input type="radio" id="male" name="gender" value="1">
+    <label for="male">Male</label><br>
+    <input type="radio"  id="female" name="gender" value="0">
+    <label for="female">Female</label><br>
+   </div>
+    <div class="form-group">
+    <label>mid</label>
+    <input type="text" class="form-control" name="mid" id="mid" required>
+  </div>
+    <div class="form-group">
+    <label>bid</label>
+    <input type="text" class="form-control" name="bid" id="bid" required>
+  </div>
+  <div class="form-group">
+    <label>username</label>
+    <input type="text" class="form-control" name="username" id="username" required>
+  </div>
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" name="password" id="Password" required>
+  </div>
+  <div class="form-group">
+    <input type="radio" id="employee" name="employee" value="0">
+    <label>employee</label><br>
+    <input type="radio"  id="internship" name="employee" value="1">
+    <label>internship</label><br>
+   </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+    <script src="../static/js/jquery-3.5.1.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -51,9 +51,9 @@ class DaoBranch(BaseDao):
         cursor.execute(sql)
         self.db.commit_close()
 
-    def update(self,bid, bname,email,phone,postcode,b_condition):
-        sql="update branch set bid=%d ,bname='%s' , email= '%s', phone='%s', postcode='%s' where bid= %d " % \
-            (bid,bname,email,phone,postcode,b_condition)
+    def update(self,bname,email,phone,postcode,bid):
+        sql="update branch set bname='%s' , email= '%s', phone='%s', postcode='%s' where bid= %d " % \
+            (bname,email,phone,postcode,bid)
         cursor = self.db.get_cursor()
         cursor.execute(sql)
         self.db.commit_close()
